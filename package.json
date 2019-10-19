@@ -1,0 +1,30 @@
+{
+  "name": "webpack-for-vue",
+  "version": "1.0.0",
+  "description": "从零构建vue配置",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config=build/webpack.base.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jcanno/webpack-for-vue.git"
+  },
+  "keywords": [],
+  "author": "Jacano",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jcanno/webpack-for-vue/issues"
+  },
+  "homepage": "https://github.com/Jcanno/webpack-for-vue#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  }
+}
