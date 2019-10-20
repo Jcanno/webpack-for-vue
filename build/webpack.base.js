@@ -1,14 +1,15 @@
 const entryPath = '../src/index.js';
 const outputPath = '../dist';
-const htmlPath = '../public/index.html';
-const faviconPath = '../public/favicon.ico';
+// const htmlPath = '../public/index.html';
+// const faviconPath = '../public/favicon.ico';
 
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const VueLoaderPlugin = require('vue-loader/lib/plugin');
 module.exports = {
-	mode: 'production',
+	// mode: 'production',
 	entry: {
 		app: path.resolve(__dirname, entryPath)
 	},
@@ -18,44 +19,52 @@ module.exports = {
     // chunkFilename: 'static/js/[name].[chunkhash:8].js',
     publicPath: '/'
 	},
-	module: {
-		rules: [
-			{
-				test: /.vue$/,
-				loader: 'vue-loader'
-			},
-			{
-        test: /\.css$/,
-        use: [
-          'style-loader',
-					'css-loader',
-					'postcss-loader',
-        ]
-      },
-			{
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-					'css-loader',
-					'postcss-loader',
-          'sass-loader'
-        ]
-			},
-			{
-        test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      },
-		],
-	},
-	plugins: [
-		new CleanWebpackPlugin(),
-		new VueLoaderPlugin(),
-		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, htmlPath),
-			favicon: path.resolve(__dirname, faviconPath),
-			filename: 'index.[hash:8].html',
-			minify: true
-		})
-	]
+	// module: {
+	// 	rules: [
+	// 		{
+	// 			test: /.vue$/,
+	// 			loader: 'vue-loader'
+	// 		},
+	// 		{
+  //       test: /\.css$/,
+  //       use: [
+	// 				MiniCssExtractPlugin.loader,
+  //         // 'style-loader',
+	// 				'css-loader',
+	// 				'postcss-loader',
+  //       ]
+  //     },
+	// 		{
+  //       test: /\.scss$/,
+  //       use: [
+	// 				MiniCssExtractPlugin.loader,
+  //         // 'style-loader',
+	// 				'css-loader',
+	// 				'postcss-loader',
+  //         'sass-loader'
+  //       ]
+	// 		},
+	// 		{
+  //       test: /\.js$/,
+  //       use: 'babel-loader',
+  //       exclude: /node_modules/
+  //     },
+	// 	],
+	// },
+	// plugins: [
+	// 	new CleanWebpackPlugin(),
+	// 	new VueLoaderPlugin(),
+	// 	new HtmlWebpackPlugin({
+	// 		template: path.resolve(__dirname, htmlPath),
+	// 		favicon: path.resolve(__dirname, faviconPath),
+	// 		filename: 'index.[hash:8].html',
+	// 		minify: true
+	// 	}),
+	// 	new MiniCssExtractPlugin({
+  //     // Options similar to the same options in webpackOptions.output
+  //     // both options are optional
+  //     filename: "[name].css",
+  //     chunkFilename: "[id].css"
+  //   })
+	// ]
 }
