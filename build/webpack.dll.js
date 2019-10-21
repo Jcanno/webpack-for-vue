@@ -3,7 +3,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const libPath = path.resolve(__dirname, '../lib');
+const libPath = path.resolve(__dirname, '../libs');
 module.exports = {
 	mode: 'production',
 	entry: {

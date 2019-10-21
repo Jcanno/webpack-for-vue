@@ -1,7 +1,7 @@
 const path = require('path');
 const htmlPath = '../public/index.html';
 const faviconPath = '../public/favicon.ico';
-const libPath = path.resolve(__dirname, '../lib');
+const libPath = path.resolve(__dirname, '../libs');
 const HappyPack = require('happypack');
 const HappyThreadPool = HappyPack.ThreadPool({ size: 5 });
 
@@ -72,11 +72,10 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		}),
 		new webpack.DllReferencePlugin({
       context: __dirname,
-      manifest: require('../lib/lib-manifest.json')
+      manifest: require('../libs/lib-manifest.json')
 		}),
 		new AddAssetHtmlPlugin({
-      // publicPath: 'js/',
-      filepath: path.resolve(__dirname, '../lib/*.js'),
+      filepath: path.resolve(libPath, '*.js'),
       outputPath: 'js/'
     }),
 		// new HappyPack({
