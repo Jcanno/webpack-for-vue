@@ -1,6 +1,7 @@
 <template>
 	<div id="title">
 		webpack for vue
+		<el-button type="primary" @click="test">test</el-button>
 	</div>
 </template>
 
@@ -16,7 +17,13 @@ export default {
 		}
 	},
 
-	methods: {},
+	methods: {
+		test() {
+			let str = `/* webpackChunkName: "example" */'./dynamic'`;
+			const a = import(/* webpackChunkName: "example" */'./dynamic');
+			console.log(a);
+		}
+	},
 
 	computed: {},
 

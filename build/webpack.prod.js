@@ -76,7 +76,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		}),
 		new AddAssetHtmlPlugin({
       filepath: path.resolve(libPath, '*.js'),
-      outputPath: 'js/'
+      outputPath: 'js'
     }),
 		// new HappyPack({
     //   id: 'scsss',
@@ -116,6 +116,6 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		})
 	],
 	optimization: {
-		// minimize: true
+		runtimeChunk: 'single',
 	}
 })
