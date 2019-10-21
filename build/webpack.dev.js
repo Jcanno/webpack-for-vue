@@ -8,6 +8,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		port: 8088,
 		open: true,
 		overlay: true,
+		hot: true
 	},
 	module: {
 		rules: [
@@ -37,6 +38,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		]
 	},
 	plugins: [
+		new webpack.HotModuleReplacementPlugin()
 	]
 })
 
