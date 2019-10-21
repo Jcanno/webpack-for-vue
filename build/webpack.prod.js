@@ -97,7 +97,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		
 		new MiniCssExtractPlugin({
       filename: "css/[name].[hash:8].css",
-      chunkFilename: "[name].[chunkhash:8].css"
+      chunkFilename: "css/[name].[chunkhash:12].css"
 		}),
 		new OptimizeCssAssetsPlugin(),
 		new UglifyJsPlugin({
@@ -117,5 +117,16 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 	],
 	optimization: {
 		runtimeChunk: 'single',
+		splitChunks: {
+      cacheGroups: {
+        vendors: {
+          name: "vendors",
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "all",
+          priority: -10,
+          reuseExistingChunk: true,
+				},
+			}
+		}
 	}
 })
