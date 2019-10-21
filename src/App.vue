@@ -18,7 +18,7 @@ export default {
 
 	methods: {
 		test() {
-			let str = `/* webpackChunkName: "example" */'./dynamic'`;
+			let str = 'example'
 			const a = import(/* webpackChunkName: "example" */'./dynamic');
 			console.log(a);
 		}

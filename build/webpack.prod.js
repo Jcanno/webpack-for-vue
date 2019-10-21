@@ -76,19 +76,5 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 				}
 			},
 		})
-	],
-	optimization: {
-		runtimeChunk: 'single',
-		splitChunks: {
-      cacheGroups: {
-        vendors: {
-          name: "vendors",
-          test: /[\\/]node_modules[\\/]/,
-          chunks: "all",
-          priority: -10,
-          reuseExistingChunk: true,
-				},
-			}
-		}
-	}
+	]
 })
