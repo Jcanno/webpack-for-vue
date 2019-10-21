@@ -54,7 +54,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
           {
             loader: 'url-loader',
             options: {
-              name: 'static/assets/[name].[hash:8].[ext]'
+              name: 'assets/[name].[hash:8].[ext]'
             }
           }
         ]
