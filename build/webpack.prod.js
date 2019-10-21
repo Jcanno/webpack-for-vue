@@ -7,6 +7,8 @@ const HappyThreadPool = HappyPack.ThreadPool({ size: 5 });
 const WebpackMerge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { VueLoaderPlugin } = require('vue-loader');
@@ -33,8 +35,8 @@ module.exports = WebpackMerge(webpackBaseConfig, {
         use: [
 					//TODO sass-loader and happypack
 					MiniCssExtractPlugin.loader,
-					'happypack/loader?id=scsss'
-					// 'css-loader', 'postcss-loader', 'sass-loader'
+					// 'happypack/loader?id=scsss'
+					'css-loader', 'postcss-loader', 'sass-loader'
         ]
 			},
 			{
@@ -71,6 +73,23 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		new MiniCssExtractPlugin({
       filename: "css/[name].[hash:8].css",
       chunkFilename: "[id].css"
-    })
-	]
+		}),
+		new OptimizeCssAssetsPlugin()
+	],
+	optimization: {
+    minimizer: [new UglifyJsPlugin({
+			parallel: true,
+			cache: true,
+			uglifyOptions: {
+        warnings: false,          // 删除警告
+        compress: {
+          drop_console: true,     // 去除日志
+          drop_debugger: true     // 去除debugger
+        },
+        output: {
+          comments: false         // 去除注释
+        }
+      },
+		})],
+  },
 })
