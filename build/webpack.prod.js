@@ -50,11 +50,6 @@ module.exports = WebpackMerge(webpackBaseConfig, {
       filepath: path.resolve(libPath, '*.js'),
       outputPath: 'js'
     }),
-		// new HappyPack({
-    //   id: 'scsss',
-    //   threadPool: HappyThreadPool,
-		// 	loaders: ['css-loader', 'postcss-loader', 'sass-loader'],
-		// }),
 		new BundleAnalyzerPlugin(),
 		
 		new MiniCssExtractPlugin({

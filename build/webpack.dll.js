@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
+const libPath = path.resolve(__dirname, '../libs');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const libPath = path.resolve(__dirname, '../libs');
 module.exports = {
 	mode: 'production',
 	entry: {

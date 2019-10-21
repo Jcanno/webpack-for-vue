@@ -1,19 +1,20 @@
-const entryPath = '../src/index.js';
-const outputPath = '../dist';
-const htmlPath = '../public/index.html';
-const faviconPath = '../public/favicon.ico';
-
 const path = require('path');
+const entryPath = path.resolve(__dirname, '../src/index.js');
+const outputPath = path.resolve(__dirname, '../dist');
+const htmlPath = path.resolve(__dirname, '../public/index.html');
+const faviconPath = path.resolve(__dirname, '../public/favicon.ico');
+
 const HappyPack = require('happypack');
-const HappyThreadPool = HappyPack.ThreadPool({ size: 5 });
+const HappyThreadPool = HappyPack.ThreadPool({ size: 2 });
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
 	entry: {
-		app: path.resolve(__dirname, entryPath)
+		app: entryPath
 	},
 	output: {
-		path: path.resolve(__dirname, outputPath),
+		path: outputPath,
 		filename: 'js/[name].[hash:8].js',
     chunkFilename: 'js/[name].[chunkhash:8].js',
     publicPath: '/'
@@ -41,8 +42,8 @@ module.exports = {
 	plugins: [
 		new VueLoaderPlugin(),
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, htmlPath),
-			favicon: path.resolve(__dirname, faviconPath),
+			template: htmlPath,
+			favicon: faviconPath,
 			filename: 'index.html',
 			minify: true
 		}),
