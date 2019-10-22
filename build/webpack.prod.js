@@ -1,15 +1,13 @@
 const path = require('path');
 const libPath = path.resolve(__dirname, '../libs');
-
+const webpackBaseConfig = require('./webpack.base');
 const webpack = require('webpack');
 const WebpackMerge = require('webpack-merge');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const webpackBaseConfig = require('./webpack.base');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 
 module.exports = WebpackMerge(webpackBaseConfig, {
 	mode: 'production',
@@ -23,22 +21,20 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 				]
 			},
 			{
+        test: /\.scss$/,
+        use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader', 'postcss-loader', 'sass-loader'
+        ]
+			},
+			{
         test: /\.css$/,
         use: [
 					MiniCssExtractPlugin.loader,
 					'happypack/loader?id=css'
         ]
-      },
-			{
-        test: /\.scss$/,
-        use: [
-					//TODO sass-loader and happypack
-					MiniCssExtractPlugin.loader,
-					// 'happypack/loader?id=scsss'
-					'css-loader', 'postcss-loader', 'sass-loader'
-        ]
-			},
-		],
+      }
+		]
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
@@ -50,11 +46,9 @@ module.exports = WebpackMerge(webpackBaseConfig, {
       filepath: path.resolve(libPath, '*.js'),
       outputPath: 'js'
     }),
-		new BundleAnalyzerPlugin(),
-		
 		new MiniCssExtractPlugin({
       filename: "css/[name].[hash:8].css",
-      chunkFilename: "css/[name].[chunkhash:12].css"
+      chunkFilename: "css/[name].[chunkhash:8].css"
 		}),
 		new OptimizeCssAssetsPlugin(),
 		new UglifyJsPlugin({

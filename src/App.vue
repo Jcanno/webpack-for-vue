@@ -1,7 +1,5 @@
 <template>
-	<div id="title">
-		webpack for vue
-	</div>
+	<h1>webpack for vue</h1>
 </template>
 
 <script>
@@ -16,13 +14,7 @@ export default {
 		}
 	},
 
-	methods: {
-		test() {
-			let str = 'example'
-			const a = import(/* webpackChunkName: "example" */'./dynamic');
-			console.log(a);
-		}
-	},
+	methods: {},
 
 	computed: {},
 
@@ -34,7 +26,5 @@ export default {
 
 
 <style lang='scss'>
-	#title {
-		color: black;
-	}
+
 </style>

@@ -30,15 +30,15 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 			{
         test: /\.scss$/,
         use: [
-					//TODO sass-loader and happypack
 					'style-loader',
-					// 'happypack/loader?id=scsss'
-					'css-loader', 'postcss-loader', 'sass-loader'
+					'css-loader', 
+					'postcss-loader', 
+					'sass-loader'
         ]
 			},
 		]
 	},
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
 	]
 })
