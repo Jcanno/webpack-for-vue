@@ -1,5 +1,3 @@
-# webpack-for-vue
-从零构建vue配置
 从零开始构建基于webpack4.0的Vue项目脚手架(参考资料优先为英文文档)，请按照步骤进行项目配置。
 ## 1.第一次打包
 1. `npm init -y` 初始化项目生成`package.json` `注: 自行配置git初始化`
@@ -32,7 +30,7 @@ module.exports = {
 9. 完成了第一次打包！但报了警告，意思告诉我们要添加`mode`为`production`或`development`的选项配置。在`webpack.prod.js`中添加`mode: 'production'`，再次使用`npm run build`打包，警告完美去除，进入下一阶段
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191022091157276.png)
 ## 2.配置loader
-1. loader主要作用是将浏览器不识别的内容转换为浏览器可以识别的内容，例如通过`babel-laoder`将`es5+`语法的js转换为`es5`语法。
+1. loader主要作用是将浏览器不识别的内容转换为浏览器可以识别的内容，例如通过`babel-loader`将`es5+`语法的js转换为`es5`语法。
 2. 在`src`目录下新建`index.scss`文件，可以随便写入sass样式，例如
 ```javascript
 #example {
@@ -49,7 +47,7 @@ import './index.scss';
 `css-loader`能识别css中的`import()、 url()`，
 `postcss-loader`能根据各个浏览器平台提供css代码兼容方案，
 `autoprefixer`通过`postcss-loader`配置自动为css代码添加各个浏览器前缀 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019102209251929.png)
-5. 添加loader之前，我们先配置`postcss-laoder`，项目根目录下创建`postcss.config.js`文件，添加如下代码
+5. 添加loader之前，我们先配置`postcss-loader`，项目根目录下创建`postcss.config.js`文件，添加如下代码
 ```javascript
 module.exports = {
 	plugins: {
@@ -116,7 +114,7 @@ module.exports = {
 
 10. 在`src`下添加`App.vue`，并在`index.js`中引入，此时打包必会报错，`npm i -D vue-loader`添加官方推荐的[vue-loader](https://vue-loader.vuejs.org/zh/guide/#%E6%89%8B%E5%8A%A8%E8%AE%BE%E7%BD%AE)
 `释:`
-`vue-laoder`能识别`.vue`文件，将其中的`script` `scss`提取出各自的文件，`V15`版本必须要引入`VueLoaderPlugin`插件(插件配置之后说明，我们先完成vue-laoder的配置)
+`vue-loader`能识别`.vue`文件，将其中的`script` `scss`提取出各自的文件，`V15`版本必须要引入`VueLoaderPlugin`插件(插件配置之后说明，我们先完成vue-loader的配置)
 11. 在`webpack.prod.js`中添加`vue-loader`
 ```javascript
 ...(省略相同代码)
@@ -142,7 +140,7 @@ module.exports = {
 ```
 再次打包，又是一次愉快的成功打包。
 
-12. `npm i -D url-laoder`添加依赖
+12. `npm i -D url-loader`添加依赖
 `url-loader`能处理图片、字体等文件类型，在`webpack.prod.js`中配置
 ```javascript
 ...(省略相同代码)
@@ -498,7 +496,7 @@ module.exports = {
 `runtimeChunk`将各个chunk运行时文件单独打包出来
 `splitChunks`的`cacheGroups`开启缓存组，对`node_modules`进行缓存复用，同样作用于开发时配置。现在打包结果如下，进入下一阶段![在这里插入图片描述](https://img-blog.csdnimg.cn/20191022135833197.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2p6cTk1MDUyMg==,size_16,color_FFFFFF,t_70)
 ## 5.配置dev
-1. `npm i -D style-laoder webpack-dev-server`添加依赖
+1. `npm i -D style-loader webpack-dev-server`添加依赖
 2. 在`package.json` `scripts`中添加`"dev": "webpack-dev-server --progress --config=build/webpack.dev.js"`
 3. 
 ```javascript
