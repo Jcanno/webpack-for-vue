@@ -18,7 +18,7 @@ module.exports = {
 	output: {
 		path: outputPath,
 		filename: 'js/[name].[hash:8].js',
-    	publicPath: '/'
+    		publicPath: '/'
 	},
 }
 ```
@@ -63,10 +63,10 @@ module.exports = {
 	module: {
 		rules: [
 			{
-        		test: /\.scss$/,
-        		use: [
+        			test: /\.scss$/,
+        			use: [
 					'css-loader', 'postcss-loader', 'sass-loader'
-        		]
+        			]
 			},
 		]
 	}
@@ -157,7 +157,7 @@ module.exports = {
     				{
       					loader: 'url-loader',
       					options: {
-        				name: 'assets/[name].[hash:8].[ext]'
+        					name: 'assets/[name].[hash:8].[ext]'
       					}
     				}
   				]
@@ -179,11 +179,11 @@ module.exports = {
 		rules: [
 			...(省略相同代码)
 			{
-        		test: /\.css$/,
-        		use: [
+        			test: /\.css$/,
+        			use: [
 					'css-loader', 'postcss-loader'
-        		]
-      		},
+        			]
+      			},
 		]
 	},
 	...(省略相同代码)
@@ -231,26 +231,26 @@ module.exports = {
 		rules: [
 			...(省略相同代码)
 			{
-        		test: /\.scss$/,
-        		use: [
+        			test: /\.scss$/,
+        			use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader', 'postcss-loader', 'sass-loader'
-        		]
+        			]
 			},
 			{
-        		test: /\.css$/,
-        		use: [
+        			test: /\.css$/,
+        			use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader', 'postcss-loader'
-        		]
-      		},
+        			]
+      			},
 		]
 	},
 	plugins: [
 		...(省略相同代码)
 		new MiniCssExtractPlugin({
-      		filename: "css/[name].[hash:8].css",
-      		chunkFilename: "css/[name].[chunkhash:8].css"
+      			filename: "css/[name].[hash:8].css",
+      			chunkFilename: "css/[name].[chunkhash:8].css"
 		}),
 	]
 }
@@ -330,23 +330,23 @@ module.exports = {
 				]
 			},
 			{
-        		test: /\.scss$/,
-        		use: [
+        			test: /\.scss$/,
+        			use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader', 'postcss-loader', 'sass-loader'
-        		]
+        			]
 			},
 			{
-        		test: /\.css$/,
-        		use: [
+        			test: /\.css$/,
+        			use: [
 					MiniCssExtractPlugin.loader,
 					'happypack/loader?id=css'
-        		]
-      		},
+        			]
+      			},
 			{
-        		test: /\.js$/,
-        		use: 'happypack/loader?id=babel',
-        		exclude: /node_modules/
+        			test: /\.js$/,
+        			use: 'happypack/loader?id=babel',
+        			exclude: /node_modules/
 			},
 		]
 	},
@@ -356,11 +356,11 @@ module.exports = {
       		id: 'css',
       		threadPool: HappyThreadPool,
 			loaders: ['css-loader', 'postcss-loader'],
-    	}),
+    		}),
 		new HappyPack({
 			id: 'babel',
-      		loaders: ['babel-loader'],
-      		threadPool: HappyThreadPool,
+      			loaders: ['babel-loader'],
+      			threadPool: HappyThreadPool,
 		})
 	]
 }
@@ -418,10 +418,10 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new webpack.DllPlugin({
-      		context: __dirname,
-      		name: '[name]_library',
-      		path: path.resolve(libPath, '[name]-manifest.json')
-    	}),
+      			context: __dirname,
+      			name: '[name]_library',
+      			path: path.resolve(libPath, '[name]-manifest.json')
+    		}),
 		new UglifyJsPlugin({
 			parallel: true,
 			cache: true,
@@ -457,13 +457,13 @@ module.exports = {
 			minify: true
 		}),
 		new webpack.DllReferencePlugin({
-      		context: __dirname,
-      		manifest: require('../libs/lib-manifest.json')
+      			context: __dirname,
+      			manifest: require('../libs/lib-manifest.json')
 		}),
 		new AddAssetHtmlPlugin({
-      		filepath: path.resolve(libPath, '*.js'),
-      		outputPath: 'js'
-    	}),
+      			filepath: path.resolve(libPath, '*.js'),
+      			outputPath: 'js'
+    		}),
 	]
 }
 ```
@@ -539,36 +539,36 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-        		use: [
+        			use: [
 					'style-loader',
 					'happypack/loader?id=css'
-        		]
+        			]
 			},
 			{
-        		test: /\.scss$/,
-        		use: [
+        			test: /\.scss$/,
+        			use: [
 					'style-loader',
 					'css-loader', 
 					'postcss-loader', 
 					'sass-loader'
-        		]
+        			]
 			},
 			{
-        		test: /\.js$/,
-        		use: 'happypack/loader?id=babel',
-        		exclude: /node_modules/
+        			test: /\.js$/,
+        			use: 'happypack/loader?id=babel',
+        			exclude: /node_modules/
 			},
 			{
-        		test: /\.(png|jpg|gif|svg|ttf|eot|woff|otf)$/,
-        		use: [
-          			{
-            			loader: 'url-loader',
-            			options: {
-              			name: 'assets/[name].[hash:8].[ext]'
-            			}
-          			}
-        		]
-      		}
+        			test: /\.(png|jpg|gif|svg|ttf|eot|woff|otf)$/,
+        			use: [
+          				{
+            					loader: 'url-loader',
+            					options: {
+              						name: 'assets/[name].[hash:8].[ext]'
+            					}
+          				}
+        			]
+      			}
 		]
 	},
 	plugins: [
@@ -580,14 +580,14 @@ module.exports = {
 			minify: true
 		}),
 		new HappyPack({
-      		id: 'css',
-      		threadPool: HappyThreadPool,
+      			id: 'css',
+      			threadPool: HappyThreadPool,
 			loaders: ['css-loader', 'postcss-loader'],
-    	}),
+		}),
 		new HappyPack({
 			id: 'babel',
-      		loaders: ['babel-loader'],
-      		threadPool: HappyThreadPool,
+      			loaders: ['babel-loader'],
+      			threadPool: HappyThreadPool,
 		}),
 	],
 	optimization: {
@@ -638,21 +638,21 @@ module.exports = {
 	module: {
 		rules: [
 			{
-        		test: /\.js$/,
-        		use: 'happypack/loader?id=babel',
-        		exclude: /node_modules/
+        			test: /\.js$/,
+        			use: 'happypack/loader?id=babel',
+        			exclude: /node_modules/
 			},
 			{
-        		test: /\.(png|jpg|gif|svg|ttf|eot|woff|otf)$/,
-        		use: [
-          			{
-            			loader: 'url-loader',
-            			options: {
-              			name: 'assets/[name].[hash:8].[ext]'
-            			}
-          			}
-        		]
-      		}
+        			test: /\.(png|jpg|gif|svg|ttf|eot|woff|otf)$/,
+        			use: [
+          				{
+            					loader: 'url-loader',
+            					options: {
+              						name: 'assets/[name].[hash:8].[ext]'
+            					}
+          				}
+        			]
+      			}
 		]
 	},
 	plugins: [
@@ -663,26 +663,26 @@ module.exports = {
 			minify: true
 		}),
 		new HappyPack({
-      		id: 'css',
-      		threadPool: HappyThreadPool,
+      			id: 'css',
+      			threadPool: HappyThreadPool,
 			loaders: ['css-loader', 'postcss-loader'],
-    	}),
+    		}),
 		new HappyPack({
 			id: 'babel',
-      		loaders: ['babel-loader'],
-      		threadPool: HappyThreadPool,
+      			loaders: ['babel-loader'],
+      			threadPool: HappyThreadPool,
 		}),
 	],
 	optimization: {
 		runtimeChunk: 'single',
 		splitChunks: {
-      	cacheGroups: {
-        	vendors: {
-          		name: "vendors",
-          		test: /[\\/]node_modules[\\/]/,
-          		chunks: "all",
-          		priority: -10,
-          		reuseExistingChunk: true,
+      			cacheGroups: {
+        			vendors: {
+          				name: "vendors",
+          				test: /[\\/]node_modules[\\/]/,
+          				chunks: "all",
+          				priority: -10,
+          				reuseExistingChunk: true,
 				},
 			}
 		}
@@ -715,19 +715,19 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 			},
 			{
 				test: /\.css$/,
-        		use: [
+        			use: [
 					'style-loader',
 					'happypack/loader?id=css'
-        		]
+        			]
 			},
 			{
-        		test: /\.scss$/,
-        		use: [
+        			test: /\.scss$/,
+        			use: [
 					'style-loader',
 					'css-loader', 
 					'postcss-loader', 
 					'sass-loader'
-        		]
+        			]
 			},
 		]
 	},
@@ -760,34 +760,34 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 				]
 			},
 			{
-        		test: /\.scss$/,
-        		use: [
+        			test: /\.scss$/,
+        			use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader', 'postcss-loader', 'sass-loader'
-        		]
+        			]
 			},
 			{
-        		test: /\.css$/,
-        		use: [
+        			test: /\.css$/,
+        			use: [
 					MiniCssExtractPlugin.loader,
 					'happypack/loader?id=css'
-        ]
-      }
+        			]
+      			}
 		]
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new webpack.DllReferencePlugin({
-      		context: __dirname,
-      		manifest: require('../libs/lib-manifest.json')
+      			context: __dirname,
+      			manifest: require('../libs/lib-manifest.json')
 		}),
 		new AddAssetHtmlPlugin({
-      		filepath: path.resolve(libPath, '*.js'),
-      		outputPath: 'js'
-    	}),
+      			filepath: path.resolve(libPath, '*.js'),
+      			outputPath: 'js'
+    		}),
 		new MiniCssExtractPlugin({
-      		filename: "css/[name].[hash:8].css",
-      		chunkFilename: "css/[name].[chunkhash:8].css"
+      			filename: "css/[name].[hash:8].css",
+      			chunkFilename: "css/[name].[chunkhash:8].css"
 		}),
 		new OptimizeCssAssetsPlugin(),
 		new UglifyJsPlugin({
