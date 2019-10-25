@@ -3,7 +3,7 @@ const libPath = path.resolve(__dirname, '../libs');
 const webpackBaseConfig = require('./webpack.base');
 const webpack = require('webpack');
 const WebpackMerge = require('webpack-merge');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -21,34 +21,34 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 				]
 			},
 			{
-        test: /\.scss$/,
-        use: [
+				test: /\.scss$/,
+				use: [
 					MiniCssExtractPlugin.loader,
 					'css-loader', 'postcss-loader', 'sass-loader'
-        ]
+				]
 			},
 			{
-        test: /\.css$/,
-        use: [
+				test: /\.css$/,
+				use: [
 					MiniCssExtractPlugin.loader,
 					'happypack/loader?id=css'
-        ]
-      }
+				]
+			}
 		]
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
 		new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require('../libs/lib-manifest.json')
+			context: __dirname,
+			manifest: require('../libs/lib-manifest.json')
 		}),
 		new AddAssetHtmlPlugin({
-      filepath: path.resolve(libPath, '*.js'),
-      outputPath: 'js'
-    }),
+			filepath: path.resolve(libPath, '*.js'),
+			outputPath: 'js'
+		}),
 		new MiniCssExtractPlugin({
-      filename: "css/[name].[hash:8].css",
-      chunkFilename: "css/[name].[chunkhash:8].css"
+			filename: 'css/[name].[hash:8].css',
+			chunkFilename: 'css/[name].[chunkhash:8].css'
 		}),
 		new OptimizeCssAssetsPlugin(),
 		new UglifyJsPlugin({
@@ -63,7 +63,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 				output: {
 					comments: false         // 去除注释
 				}
-			},
+			}
 		})
 	]
-})
+});

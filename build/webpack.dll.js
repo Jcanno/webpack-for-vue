@@ -8,10 +8,10 @@ module.exports = {
 	mode: 'production',
 	entry: {
 		lib: [
-			'vue', 
-			'vue-router', 
-			'vuex', 
-			'axios', 
+			'vue',
+			'vue-router',
+			'vuex',
+			'axios',
 			'element-ui',
 			'lodash'
 		]
@@ -24,10 +24,10 @@ module.exports = {
 	plugins: [
 		new CleanWebpackPlugin(),
 		new webpack.DllPlugin({
-      context: __dirname,
-      name: '[name]_library',
-      path: path.resolve(libPath, '[name]-manifest.json')
-    }),
+			context: __dirname,
+			name: '[name]_library',
+			path: path.resolve(libPath, '[name]-manifest.json')
+		}),
 		new UglifyJsPlugin({
 			parallel: true,
 			cache: true,
@@ -40,7 +40,7 @@ module.exports = {
 				output: {
 					comments: false         // 去除注释
 				}
-			},
+			}
 		})
-	],
-}
+	]
+};

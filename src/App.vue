@@ -7,23 +7,18 @@
 export default {
 	name: 'app',
 
-	components:{},
+	components: {},
 
-	data () {
+	data() {
 		return {
-		}
+		};
 	},
 
 	methods: {},
 
-	computed: {},
-
-	created() {},
-
-	mounted() {},
-}
+	computed: {}
+};
 </script>
-
 
 <style lang='scss'>
 

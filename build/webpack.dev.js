@@ -16,29 +16,31 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 			{
 				test: /\.vue$/,
 				exclude: /node_modules/,
-				use: [
-					'vue-loader'
-				]
+				use: [ 'vue-loader' ]
+			},
+			{
+				test: /\.(vue|js|jsx)$/,
+				enforce: 'pre',
+				exclude: /node_modules/,
+				loader: 'eslint-loader'
 			},
 			{
 				test: /\.css$/,
-        use: [
+				use: [
 					'style-loader',
 					'happypack/loader?id=css'
-        ]
+				]
 			},
 			{
-        test: /\.scss$/,
-        use: [
+				test: /\.scss$/,
+				use: [
 					'style-loader',
-					'css-loader', 
-					'postcss-loader', 
+					'css-loader',
+					'postcss-loader',
 					'sass-loader'
-        ]
-			},
+				]
+			}
 		]
 	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-	]
-})
+	plugins: [ new webpack.HotModuleReplacementPlugin() ]
+});

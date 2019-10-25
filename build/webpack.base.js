@@ -15,26 +15,26 @@ module.exports = {
 	output: {
 		path: outputPath,
 		filename: 'js/[name].[hash:8].js',
-    publicPath: '/'
+		publicPath: '/'
 	},
 	module: {
 		rules: [
 			{
-        test: /\.js$/,
-        use: 'happypack/loader?id=babel',
-        exclude: /node_modules/
+				test: /\.js$/,
+				use: 'happypack/loader?id=babel',
+				exclude: /node_modules/
 			},
 			{
-        test: /\.(png|jpg|gif|svg|ttf|eot|woff|otf)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              name: 'assets/[name].[hash:8].[ext]'
-            }
-          }
-        ]
-      }
+				test: /\.(png|jpg|gif|svg|ttf|eot|woff|otf)$/,
+				use: [
+					{
+						loader: 'url-loader',
+						options: {
+							name: 'assets/[name].[hash:8].[ext]'
+						}
+					}
+				]
+			}
 		]
 	},
 	plugins: [
@@ -45,28 +45,28 @@ module.exports = {
 			minify: true
 		}),
 		new HappyPack({
-      id: 'css',
-      threadPool: HappyThreadPool,
-			loaders: ['css-loader', 'postcss-loader'],
-    }),
+			id: 'css',
+			threadPool: HappyThreadPool,
+			loaders: [ 'css-loader', 'postcss-loader' ]
+		}),
 		new HappyPack({
 			id: 'babel',
-      loaders: ['babel-loader'],
-      threadPool: HappyThreadPool,
-		}),
+			loaders: [ 'babel-loader' ],
+			threadPool: HappyThreadPool
+		})
 	],
 	optimization: {
 		runtimeChunk: 'single',
 		splitChunks: {
-      cacheGroups: {
-        vendors: {
-          name: "vendors",
-          test: /[\\/]node_modules[\\/]/,
-          chunks: "all",
-          priority: -10,
-          reuseExistingChunk: true,
-				},
+			cacheGroups: {
+				vendors: {
+					name: 'vendors',
+					test: /[\\/]node_modules[\\/]/,
+					chunks: 'all',
+					priority: -10,
+					reuseExistingChunk: true
+				}
 			}
 		}
 	}
-}
+};
