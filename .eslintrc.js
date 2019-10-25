@@ -59,7 +59,7 @@ module.exports = {
     // 可以使用空格和tab混合缩进
     "no-mixed-spaces-and-tabs": [1, "smart-tabs"],
     // auto 最多一个空行
-    "no-multiple-empty-lines": [1, { "max": 1, "maxEOF": 1 }],
+    "no-multiple-empty-lines": [1, { "max": 1, "maxEOF": 0 }],
     // auto 禁止行尾留空格，允许行尾注释
     "no-trailing-spaces": [1, { 
       "skipBlankLines": true,
