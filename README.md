@@ -809,9 +809,9 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 ```
 
 ## 7.eslint-loader
-1.`npm i -D eslint eslint-laoder eslint-plugin-vue`添加依赖 使用`eslint-loader`来进行代码检查
-2.根目录下添加`.eslintrc.js`配置文件，编写基于个人实际情况的代码规范规则
-3.在`webpack.dev.js`中加入`eslint-loader`，在开发中进行代码检查
+1. `npm i -D eslint eslint-laoder eslint-plugin-vue`添加依赖 使用`eslint-loader`来进行代码检查
+2. 根目录下添加`.eslintrc.js`配置文件，编写基于个人实际情况的代码规范规则
+3. 在`webpack.dev.js`中加入`eslint-loader`，在开发中进行代码检查
 ```javascript
 ...(省略相同代码)
 module.exports = WebpackMerge(webpackBaseConfig, {
