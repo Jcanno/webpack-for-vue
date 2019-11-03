@@ -808,5 +808,28 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 })
 ```
 
-## 7.结语
+## 7.eslint-loader
+1.`npm i -D eslint eslint-laoder eslint-plugin-vue`添加依赖 使用`eslint-loader`来进行代码检查
+2.根目录下添加`.eslintrc.js`配置文件，编写基于个人实际情况的代码规范规则
+3.在`webpack.dev.js`中加入`eslint-loader`，在开发中进行代码检查
+```javascript
+...(省略相同代码)
+module.exports = WebpackMerge(webpackBaseConfig, {
+	...(省略相同代码)
+	module: {
+		rules: [
+			...(省略相同代码)
+			{
+				test: /\.(vue|js|jsx)$/,
+				enforce: 'pre',
+				exclude: /node_modules/,
+				loader: 'eslint-loader'
+			}
+		]
+	},
+	...(省略相同代码)
+});
+```
+
+## 8.结语
 目前是较为通用的webpack版本，开发者可以根据项目的实际情况和[官方文档](https://www.webpackjs.com/concepts/)在进行深入优化配置。
