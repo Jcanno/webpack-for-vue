@@ -12,9 +12,9 @@ module.exports = {
 			'vue-router',
 			'vuex',
 			'axios',
-			'element-ui',
 			'lodash'
-		]
+		],
+		element: ['element-ui']
 	},
 	output: {
 		path: libPath,

@@ -47,11 +47,11 @@ module.exports = {
 		new HappyPack({
 			id: 'css',
 			threadPool: HappyThreadPool,
-			loaders: [ 'css-loader', 'postcss-loader' ]
+			loaders: ['css-loader', 'postcss-loader']
 		}),
 		new HappyPack({
 			id: 'babel',
-			loaders: [ 'babel-loader' ],
+			loaders: ['babel-loader'],
 			threadPool: HappyThreadPool
 		})
 	],

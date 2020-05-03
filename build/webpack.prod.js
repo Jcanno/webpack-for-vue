@@ -8,6 +8,22 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+
+const getDllReferencePlugins = function() {
+	const names = ['element', 'lib'];
+
+	return names.reduce((res, name) => {
+		res.push(
+			new webpack.DllReferencePlugin({
+				context: __dirname,
+				manifest: path.resolve(__dirname, `../libs/${name}-manifest.json`)
+			})
+		);
+
+		return res;
+	}, []);
+};
 
 module.exports = WebpackMerge(webpackBaseConfig, {
 	mode: 'production',
@@ -37,14 +53,13 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 		]
 	},
 	plugins: [
+		new BundleAnalyzerPlugin(),
 		new CleanWebpackPlugin(),
-		new webpack.DllReferencePlugin({
-			context: __dirname,
-			manifest: require('../libs/lib-manifest.json')
-		}),
+		...getDllReferencePlugins(),
 		new AddAssetHtmlPlugin({
 			filepath: path.resolve(libPath, '*.js'),
-			outputPath: 'js'
+			outputPath: 'js/',
+			publicPath: '/js/'
 		}),
 		new MiniCssExtractPlugin({
 			filename: 'css/[name].[hash:8].css',
@@ -55,7 +70,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 			parallel: true,
 			cache: true,
 			uglifyOptions: {
-				warnings: false,          // 删除警告
+				warnings: false,         // 删除警告
 				compress: {
 					drop_console: true,     // 去除日志
 					drop_debugger: true     // 去除debugger

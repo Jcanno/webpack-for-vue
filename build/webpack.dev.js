@@ -16,7 +16,7 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 			{
 				test: /\.vue$/,
 				exclude: /node_modules/,
-				use: [ 'vue-loader' ]
+				use: ['vue-loader']
 			},
 			{
 				test: /\.(vue|js|jsx)$/,
@@ -42,5 +42,5 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 			}
 		]
 	},
-	plugins: [ new webpack.HotModuleReplacementPlugin() ]
+	plugins: [new webpack.HotModuleReplacementPlugin()]
 });
