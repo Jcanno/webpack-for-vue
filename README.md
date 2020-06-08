@@ -831,5 +831,11 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 });
 ```
 
-## 8.结语
+## 8.引入CDN
+1. `npm i -D eslint html-webpack-externals-plugin`添加依赖 使用`html-webpack-externals-plugin`来添加CDN
+2. 为了加快首屏加载速度并降低项目体积，我们可以将`webpack.dll.js`中要打包的`vue`、`lodash`移出
+3. 在`webpack.prod.js`加入`HtmlWebpackExternalsPlugin`, 并添加`externals`，`module`指的是我们在项目中引入的模块名称，如`import Vue from 'vue`,这里`module`就是`vue`，`entry`就是我们要添加的CDN链接，它会将`entry`以外链形式添加到`index.html`上，`global`指的是CDN模块中最终导出的全局变量名。
+4. 这个时候重新打包`dll`并使用`build`打包，`webpack`不会打包`lodash`和`vue`，`index.html`会添加上我们引入的CDN链接。
+
+## 9.结语
 目前是较为通用的webpack版本，开发者可以根据项目的实际情况和[官方文档](https://www.webpackjs.com/concepts/)在进行深入优化配置。
