@@ -8,11 +8,9 @@ module.exports = {
 	mode: 'production',
 	entry: {
 		lib: [
-			'vue',
 			'vue-router',
 			'vuex',
-			'axios',
-			'lodash'
+			'axios'
 		],
 		element: ['element-ui']
 	},

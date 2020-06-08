@@ -4,6 +4,7 @@ const webpackBaseConfig = require('./webpack.base');
 const webpack = require('webpack');
 const WebpackMerge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -55,6 +56,20 @@ module.exports = WebpackMerge(webpackBaseConfig, {
 	plugins: [
 		new BundleAnalyzerPlugin(),
 		new CleanWebpackPlugin(),
+		new HtmlWebpackExternalsPlugin({
+			externals: [
+				{
+					module: 'lodash',
+					entry: 'https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js',
+					global: 'lodash'
+				},
+				{
+					module: 'vue',
+					entry: 'https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.min.js',
+					global: 'Vue'
+				}
+			]
+		}),
 		...getDllReferencePlugins(),
 		new AddAssetHtmlPlugin({
 			filepath: path.resolve(libPath, '*.js'),
